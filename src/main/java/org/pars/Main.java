@@ -13,17 +13,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ArrayList list = new ArrayList();
 
-        var document = Jsoup.connect("https://readmanga.live/list?sortType=rate")
+        Document document = Jsoup.connect("https://readmanga.live/list?sortType=rate")
                 .userAgent("Chrome/81.0.4044.138").get();
 
-        var titleElements = document.select("h3");
-        var genreElements = document.select("a.badge.badge-light.element-link");
-
-        for (var element : titleElements) {
-            System.out.println(element.text());
-            System.out.println(genreElements.text());
-            genreElements.next();
-
+        Elements allAnime = document.getElementsByClass("col-sm-6");
+        Elements img = allAnime.select("img");
+        for (Element element : img) {
+            System.out.println(element.getElementsByAttribute("title"));
         }
 
     }
