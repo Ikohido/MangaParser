@@ -7,21 +7,35 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main {
     public static void main(String[] args) throws IOException {
+
         Document document = Jsoup.connect("https://readmanga.live/list?sortType=rate")
                 .userAgent("Chrome/81.0.4044.138").get();
 
         Elements allAnime = document.getElementsByClass("col-sm-6");
 
         for (Element element : allAnime) {
-            System.out.println("Тайтл: " + element.select("img").attr("title"));
+            AnimeDTO animeDTO = new AnimeDTO();
+            animeDTO.setTitle(element.select("img").attr("title"));
+            animeDTO.setImageLink(element.select("img").attr("data-original"));
+            animeDTO.setGenres(element.select(".badge.badge-light").text());
+            animeDTO.setDescription(element.select(".manga-description").text());
+
+
+
+
+          /*  System.out.println("Тайтл: " + element.select("img").attr("title"));
             System.out.println("Картинка тайтла: " + element.select("img").attr("data-original"));
             System.out.println("Жанры тайтла: " + element.select(".badge.badge-light").text());
             System.out.println("Описание тайтла: " + element.select(".manga-description").text());
-            System.out.println("");
+            System.out.println("");*/
+            System.out.println(animeDTO.toString().replaceAll("AnimeDTO", " ") + "\n");
+
+
         }
 
 
