@@ -6,8 +6,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class Main {
@@ -26,13 +25,6 @@ public class Main {
             animeDTO.setDescription(element.select(".manga-description").text());
 
 
-
-
-          /*  System.out.println("Тайтл: " + element.select("img").attr("title"));
-            System.out.println("Картинка тайтла: " + element.select("img").attr("data-original"));
-            System.out.println("Жанры тайтла: " + element.select(".badge.badge-light").text());
-            System.out.println("Описание тайтла: " + element.select(".manga-description").text());
-            System.out.println("");*/
             System.out.println(animeDTO.toString().replaceAll("AnimeDTO", " ") + "\n");
 
 

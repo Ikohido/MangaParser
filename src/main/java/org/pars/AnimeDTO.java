@@ -1,7 +1,5 @@
 package org.pars;
 
-import org.jsoup.nodes.Element;
-
 public class AnimeDTO {
     private String title;
     private String imageLink;
