@@ -40,8 +40,8 @@ public class AnimeDTO {
 
     @Override
     public String toString() {
-        return "AnimeDTO{" +
-                "title='" + title + '\'' +
+        return " " +
+                " title='" + title + '\'' +
                 ", imageLink='" + imageLink + '\'' +
                 ", genres='" + genres + '\'' +
                 ", description='" + description + '\'' +
