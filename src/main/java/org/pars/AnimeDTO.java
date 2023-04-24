@@ -1,5 +1,7 @@
 package org.pars;
 
+import java.util.List;
+
 public class AnimeDTO {
     private String title;
     private String imageLink;
@@ -47,4 +49,6 @@ public class AnimeDTO {
                 ", description='" + description + '\'' +
                 '}';
     }
+
+
 }
