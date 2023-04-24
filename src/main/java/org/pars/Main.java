@@ -17,7 +17,6 @@ public class Main {
                 .userAgent("Chrome/81.0.4044.138").get();
 
         Elements allAnime = document.getElementsByClass("col-sm-6");
-        /*  Elements genres = allAnime.select(".badge.badge-light");*/
 
         for (Element element : allAnime) {
             AnimeDTO animeDTO = new AnimeDTO();
@@ -29,11 +28,12 @@ public class Main {
                 anime.add(currentGenre.text());
 
             }
-            animeDTO.setGenres(anime.toString());
-            anime.clear();
+            animeDTO.setGenres(anime);
+
             animeDTO.setDescription(element.select(".manga-description").text());
 
             System.out.println(animeDTO + "\n");
+            anime.clear();
         }
 
 

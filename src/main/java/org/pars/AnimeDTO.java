@@ -1,11 +1,12 @@
 package org.pars;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AnimeDTO {
     private String title;
     private String imageLink;
-    private String genres;
+    private List<String> genres;
     private String description;
 
     public String getTitle() {
@@ -24,11 +25,11 @@ public class AnimeDTO {
         this.imageLink = imageLink;
     }
 
-    public String getGenres() {
+    public List<String> getGenres() {
         return genres;
     }
 
-    public void setGenres(String genres) {
+    public void setGenres(List<String> genres) {
         this.genres = genres;
     }
 
