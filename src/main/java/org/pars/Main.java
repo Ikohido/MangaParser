@@ -12,31 +12,40 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        List<String> anime = new ArrayList<>();
-        Document document = Jsoup.connect("https://readmanga.live/list?sortType=rate")
-                .userAgent("Chrome/81.0.4044.138").get();
+        List<AnimeDTO> allAnime = new ArrayList<>();
 
-        Elements allAnime = document.getElementsByClass("col-sm-6");
+        int offset = 0;
+        while (true) {
+            Document document = Jsoup.connect("https://readmanga.live/list?sortType=RATING&offset=" + offset).get();
 
-        for (Element element : allAnime) {
-            AnimeDTO animeDTO = new AnimeDTO();
-            animeDTO.setTitle(element.select("img").attr("title"));
-            animeDTO.setImageLink(element.select("img").attr("data-original"));
 
-            Elements rightGenres = element.select(".badge.badge-light");
-            for (Element currentGenre : rightGenres) {
-                anime.add(currentGenre.text());
+            Elements allAnimeOnPage = document.getElementsByClass("col-sm-6");
 
+            if (allAnimeOnPage.isEmpty()) {
+                break;
             }
-            animeDTO.setGenres(anime);
 
-            animeDTO.setDescription(element.select(".manga-description").text());
+            for (Element element : allAnimeOnPage) {
+                AnimeDTO animeDTO = new AnimeDTO();
+                animeDTO.setTitle(element.select("img").attr("title"));
+                animeDTO.setImageLink(element.select("img").attr("data-original"));
 
-            System.out.println(animeDTO + "\n");
-            anime.clear();
+                Elements genresElements = element.getElementsByClass("element-link");
+                List<String> genres = new ArrayList<>();
+                for (Element currentGenre : genresElements) {
+                    genres.add(currentGenre.text());
+
+                }
+                animeDTO.setGenres(genres);
+
+                animeDTO.setDescription(element.select(".manga-description").text());
+                allAnime.add(animeDTO);
+                System.out.println(animeDTO + "\n");
+            }
+            offset += 70;
         }
 
-
+        System.out.println("Всего аниме на сайте: " + allAnime.size());
     }
 }
 
