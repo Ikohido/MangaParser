@@ -1,6 +1,5 @@
 package org.pars;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AnimeDTO {
@@ -43,13 +42,11 @@ public class AnimeDTO {
 
     @Override
     public String toString() {
-        return " " +
-                " title='" + title + '\'' +
+        return "AnimeDTO{" +
+                "title='" + title + '\'' +
                 ", imageLink='" + imageLink + '\'' +
-                ", genres='" + genres + '\'' +
+                ", genres=" + genres +
                 ", description='" + description + '\'' +
                 '}';
     }
-
-
 }
