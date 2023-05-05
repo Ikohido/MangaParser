@@ -1,2 +1,2 @@
-﻿# MangaParser
+Данный парсер выгружает все тайтлы(манги, манхвы и маньхуа) с сайта readmanga.live в виде, показанном на скриншоте ниже.
 ![image](https://user-images.githubusercontent.com/106984610/236444917-f56eaf1c-ceb2-443d-a3d5-3d98b76724c1.png)
